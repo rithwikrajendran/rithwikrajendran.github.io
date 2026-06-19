@@ -43,14 +43,14 @@ nav {
 }
 .nav-brand {
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.35rem;
   color: var(--text);
-  letter-spacing: -.01em;
+  letter-spacing: -.02em;
 }
 .nav-brand span { color: var(--accent); }
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.75rem;
   list-style: none;
 }
 .nav-links a {
@@ -122,12 +122,10 @@ h2 {
   gap: 3rem;
   align-items: center;
 }
-.avatar-wrap {
-  flex-shrink: 0;
-}
+.avatar-wrap { flex-shrink: 0; }
 .avatar-wrap img {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--accent);
@@ -163,7 +161,7 @@ h2 {
 }
 .hero-edu strong { color: var(--text); }
 
-/* Social icons */
+/* ── Social icons ────────────────────────────────────────────── */
 .social-row {
   display: flex;
   gap: .75rem;
@@ -188,6 +186,187 @@ h2 {
   background: rgba(74,222,128,.06);
 }
 .social-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* Brand colours for icons — always on */
+.social-btn--linkedin svg  { color: #0A66C2; }
+.social-btn--github svg    { color: #e6edf3; }
+.social-btn--substack svg  { color: #FF6719; }
+
+/* Hover overrides to keep brand colour visible */
+.social-btn--linkedin:hover svg  { color: #0A66C2; }
+.social-btn--github:hover svg    { color: #e6edf3; }
+.social-btn--substack:hover svg  { color: #FF6719; }
+
+/* ── Career Road Timeline ─────────────────────────────────────── */
+.road-outer {
+  margin-top: 2rem;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  -webkit-overflow-scrolling: touch;
+}
+
+.road-scene {
+  min-width: 600px;
+  padding: 2rem 2rem 1.5rem;
+}
+
+/* Signs row */
+.road-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.signs-row {
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.now-badge {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 20px;
+  padding: .15rem .55rem;
+  margin-bottom: .35rem;
+  white-space: nowrap;
+}
+
+.car-emoji {
+  font-size: 2rem;
+  margin-bottom: .3rem;
+  animation: car-bounce 2s ease-in-out infinite;
+  display: block;
+}
+
+@keyframes car-bounce {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%       { transform: translateY(-12px) rotate(4deg); }
+}
+
+.year-pill {
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: .18rem .6rem;
+  margin-bottom: .5rem;
+  white-space: nowrap;
+}
+.year-pill.current {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sign-board {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border);
+  border-radius: 8px;
+  padding: .65rem .85rem;
+  text-align: center;
+  width: 148px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+}
+.sign-board--wipro  { border-top-color: #c8102e; }
+.sign-board--bristol { border-top-color: #BE0000; }
+.sign-board--asda {
+  border-top-color: #00B040;
+  box-shadow: 0 0 18px rgba(0,176,64,.14);
+}
+
+.stop-logo {
+  height: 34px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+}
+
+.stop-name {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.2;
+}
+.stop--current .stop-name { color: var(--accent); }
+
+.stop-pole {
+  width: 2px;
+  height: 52px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+}
+
+/* Road strip */
+.road-strip {
+  position: relative;
+  background: #151a26;
+  height: 52px;
+  border-top: 4px solid #252b3a;
+  border-bottom: 4px solid #252b3a;
+  overflow: hidden;
+}
+
+.road-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 18px,
+    rgba(255,255,255,.06) 18px,
+    rgba(255,255,255,.06) 19px
+  );
+}
+
+.road-strip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  right: 4%;
+  border-top: 2px dashed rgba(255,255,255,.15);
+  transform: translateY(-50%);
+}
+
+/* Meta row */
+.meta-row {
+  padding-top: .85rem;
+}
+
+.stop-meta {
+  flex: 1;
+  text-align: center;
+}
+
+.meta-role {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+}
+.stop-meta--current .meta-role { color: var(--accent); }
+
+.meta-dur {
+  font-size: .72rem;
+  color: var(--muted);
+  margin-top: .15rem;
+}
 
 /* ── Writing ─────────────────────────────────────────────────── */
 .card-grid {
@@ -285,17 +464,33 @@ h2 {
 }
 
 /* ── Skills ──────────────────────────────────────────────────── */
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+}
+
+.skill-group-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: .6rem;
+}
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: .6rem;
-  margin-top: 1.5rem;
+  gap: .5rem;
 }
+
 .skill-tag {
-  padding: .3rem .75rem;
+  padding: .28rem .7rem;
   border: 1px solid var(--border);
   border-radius: 20px;
-  font-size: .8rem;
+  font-size: .78rem;
   font-weight: 500;
   color: var(--muted);
   transition: border-color .15s, color .15s;
