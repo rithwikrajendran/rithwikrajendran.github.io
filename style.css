@@ -230,28 +230,42 @@ h2 {
   flex: 1;
 }
 
+/* Car on road */
+.road-car {
+  position: absolute;
+  /* align with ASDA stop: 3rd of 3 space-around columns ≈ 80% */
+  left: 78%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 2;
+}
+
 .now-badge {
-  font-size: .65rem;
+  font-size: .62rem;
   font-weight: 700;
   letter-spacing: .06em;
   color: var(--bg);
   background: var(--accent);
   border-radius: 20px;
-  padding: .15rem .55rem;
-  margin-bottom: .35rem;
+  padding: .12rem .5rem;
   white-space: nowrap;
 }
 
 .car-emoji {
   font-size: 2rem;
-  margin-bottom: .3rem;
-  animation: car-bounce 2s ease-in-out infinite;
   display: block;
+  /* flip to face right (forward direction of travel) */
+  transform: scaleX(-1);
+  animation: car-bounce 2s ease-in-out infinite;
 }
 
 @keyframes car-bounce {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50%       { transform: translateY(-12px) rotate(4deg); }
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50%       { transform: scaleX(-1) translateY(-8px); }
 }
 
 .year-pill {
@@ -318,7 +332,7 @@ h2 {
 
 /* Road strip */
 .road-strip {
-  position: relative;
+  position: relative; /* anchor for .road-car */
   background: #151a26;
   height: 52px;
   border-top: 4px solid #252b3a;
